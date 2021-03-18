@@ -1,0 +1,61 @@
+﻿@model IEnumerable<F20ITONK.ASPNETCore.MicroService.ClassLib.Models.Haandvaerker>
+
+@{
+    ViewBag.Title = "Haandvaerker";
+}
+
+<header>
+    <h1>
+       Håndværker
+    </h1>
+    <h5>
+        Bestil en håndværker i dag!
+    </h5>
+</header>
+
+<table class="content-table">
+    <thead>
+        <tr>
+            <th>
+                Ansættelse
+            </th>
+            <th>
+                Efternavn
+            </th>
+            <th>
+                Fagområde
+            </th>
+            <th>
+                Fornavn
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HVAnsaettelsedato.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HVEfternavn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HVFagomraade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HVFornavn)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.HaandvaerkerId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.HaandvaerkerId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.HaandvaerkerId })
+                </td>
+            </tr>
+        }
+
+</table>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>

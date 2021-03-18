@@ -1,0 +1,50 @@
+﻿@model F20ITONK.ASPNETCore.MicroService.ClassLib.Models.Haandvaerker
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Haandvaerker</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HVAnsaettelsedato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HVAnsaettelsedato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HVEfternavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HVEfternavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HVFagomraade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HVFagomraade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HVFornavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HVFornavn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HaandvaerkerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
