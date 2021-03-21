@@ -1,34 +1,27 @@
-﻿@model IEnumerable<F20ITONK.ASPNETCore.MicroService.ClassLib.Models.Haandvaerker>
+﻿@model IEnumerable<F20ITONK.ASPNETCore.MicroService.ClassLib.Models.Recipe>
 
 @{
-    ViewBag.Title = "Haandvaerker";
+    ViewBag.Title = "Recipe";
 }
 
 <header>
     <h1>
-       Håndværker
+       Recipe
     </h1>
-    <h5>
-        Bestil en håndværker i dag!
-    </h5>
 </header>
 
 <table class="content-table">
     <thead>
         <tr>
             <th>
-                Ansættelse
+                Name
             </th>
             <th>
-                Efternavn
+                Decription
             </th>
             <th>
-                Fagområde
+                Ingrediens
             </th>
-            <th>
-                Fornavn
-            </th>
-            <th></th>
         </tr>
     </thead>
 
@@ -36,21 +29,18 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.HVAnsaettelsedato.Year)
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.HVEfternavn)
+                    @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.HVFagomraade)
+                    @Html.DisplayFor(modelItem => item.Ingrediens)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.HVFornavn)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.HaandvaerkerId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.HaandvaerkerId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.HaandvaerkerId })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RecipeId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RecipeId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RecipeId })
                 </td>
             </tr>
         }

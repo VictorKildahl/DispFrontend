@@ -22,7 +22,7 @@ namespace Testfront.Controllers
         // GET: Home
         public async Task<ActionResult> Index()
         {
-            List<Haandvaerker> haandvaerkers = new List<Haandvaerker>();
+            List<Recipe> recipes = new List<Recipe>();
             //beHost += Environment.GetEnvironmentVariable("BE_HOST") ?? "localhost:59899";
            // beHost += "/";
 
@@ -36,7 +36,7 @@ namespace Testfront.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Sending request to find web api REST service resource GetAllEmployees using HttpClient
-                HttpResponseMessage Res = await client.GetAsync("api/haandvaerkers");
+                HttpResponseMessage Res = await client.GetAsync("api/recipes");
 
                 //Checking the response is successful or not which is sent using HttpClient
                 if (Res.IsSuccessStatusCode)
@@ -44,18 +44,18 @@ namespace Testfront.Controllers
                     //Storing the response details received from the web api
                     var HResponse = Res.Content.ReadAsStringAsync().Result;
 
-                    //Deserializing the response received from web api and storing into the Haandvaerker list
-                    haandvaerkers = JsonConvert.DeserializeObject<List<Haandvaerker>>(HResponse);
+                    //Deserializing the response received from web api and storing into the Recipe list
+                    recipes = JsonConvert.DeserializeObject<List<Recipe>>(HResponse);
                 }
             }
 
-            return View(haandvaerkers);
+            return View(recipes);
         }
 
-        // GET: Haandvaerker/Details/id
+        // GET: Recipe/Details/id
         public async Task<ActionResult> Details(int? id)
         {
-            Haandvaerker hv = new Haandvaerker();
+            Recipe rp = new Recipe();
             if (id == null)
             {
                 return new StatusCodeResult((int)System.Net.HttpStatusCode.BadRequest);
@@ -72,7 +72,7 @@ namespace Testfront.Controllers
 
                 //Sending request to find web api REST service resource GetAllEmployees using HttpClient
                 string urlId = id.ToString();
-                HttpResponseMessage Res = await client.GetAsync("api/haandvaerkers/" + urlId);
+                HttpResponseMessage Res = await client.GetAsync("api/recipes/" + urlId);
 
                 //Checking the response is successful or not which is sent using HttpClient
                 if (Res.IsSuccessStatusCode)
@@ -80,18 +80,18 @@ namespace Testfront.Controllers
                     //Storing the response details received from the web api
                     var HResponse = Res.Content.ReadAsStringAsync().Result;
 
-                    //Deserializing the response received from web api and storing into the Haandvaerker list
-                    hv = JsonConvert.DeserializeObject<Haandvaerker>(HResponse);
+                    //Deserializing the response received from web api and storing into the Recipe list
+                    rp = JsonConvert.DeserializeObject<Recipe>(HResponse);
                 }
 
             }
 
-            if (hv == null)
+            if (rp == null)
             {
                 return NotFound();
             }
 
-            return View(hv);
+            return View(rp);
         }
 
     }
