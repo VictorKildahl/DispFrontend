@@ -16,7 +16,7 @@ namespace Testfront.Controllers
     public class HomeController : Controller
     {
         //Hosted web API REST Service base url
-        string Baseurl = "http://host.docker.internal:8888/";
+        string Baseurl = "http://backend-service/";
 
         //string beHost = "http://";
 
@@ -75,7 +75,7 @@ namespace Testfront.Controllers
 
                     var myContent = JsonConvert.SerializeObject(newRecipe);
 
-                    await client.PostAsync("api/recipes", new StringContent(myContent, Encoding.UTF8, "application/json"));
+                    await client.PostAsync("http://backend-service/api/recipes", new StringContent(myContent, Encoding.UTF8, "application/json"));
                     return RedirectToAction(nameof(Index), "Home");
                 }
             }
