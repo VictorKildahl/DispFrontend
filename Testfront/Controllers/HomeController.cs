@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Testfront.Models;
 
@@ -50,6 +51,35 @@ namespace Testfront.Controllers
             }
 
             return View(recipes);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(Recipe recipe)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var client = new HttpClient())
+                {
+                    Recipe newRecipe = new Recipe
+                    {
+                        RecipeId = recipe.RecipeId,
+                        Name = recipe.Name,
+                        Description = recipe.Description,
+                        Ingrediens = recipe.Ingrediens
+                    };
+
+                    var myContent = JsonConvert.SerializeObject(newRecipe);
+
+                    await client.PostAsync("api/recipes", new StringContent(myContent, Encoding.UTF8, "application/json"));
+                    return RedirectToAction(nameof(Index), "Home");
+                }
+            }
+            return View();
         }
 
         // GET: Recipe/Details/id
